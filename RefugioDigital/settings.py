@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 #Para no usar el users
 AUTH_USER_MODEL = 'usuarios_app.Usuario'
 
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -88,19 +89,20 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
+#Descomentar en caso de que se quieran contraseñas más restrictivas
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    #{
+    #    'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    #},
+    #{
+    #    'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    #},
+    #{
+    #    'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    #},
+    #{
+    #    'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    #},
 ]
 
 
