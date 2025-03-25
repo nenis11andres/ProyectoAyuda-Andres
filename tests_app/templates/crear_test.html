@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block content %}
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crear test</title>
+  </head>
+  <body>
+    <h2>Nuevo test</h2>
+    <form method="post">
+      {% csrf_token %} {{ form.as_p }}
+      <button type="submit">Guardar test</button>
+    </form>
+  </body>
+</html>
+{% endblock %}

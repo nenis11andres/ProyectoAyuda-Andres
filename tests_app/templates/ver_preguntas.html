@@ -1,0 +1,66 @@
+{% extends 'base.html' %} {% block content %}
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Preguntas</title>
+  </head>
+  <body>
+    {% if messages %}
+    <div class="messages">
+    {% for message in messages %}
+        <div class="alert {% if message.tags %}alert-{{ message.tags }}"{% endif %}>
+            {{ message }}
+        </div>
+    {% endfor %}
+    </div>
+{% endif %}
+
+    {% if preguntas %}
+    <table class="table table-dark table-responsive">
+      <caption>
+        Preguntas del test "{{ test.nombre }}"
+      </caption>
+      <thead>
+        <tr>
+          <th>Texto</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for pregunta in preguntas %}
+        <tr>
+          <td>{{ pregunta.texto }}</td>
+          <td>
+            <a
+              href="{% url 'editar_pregunta' pregunta.id test.id %}"
+              class="btn btn-light"
+              >Editar</a
+            >
+          </td>
+          <td>
+            <form
+              method="POST"
+              action="{% url 'eliminar_pregunta' pregunta.id test.id %}"
+              onsubmit="return confirm('¿Seguro?')"
+            >
+              {% csrf_token %}
+              <button type="submit" value="borrar" class="btn btn-danger">
+                Eliminar
+              </button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <h2>No hay preguntas disponibles</h2>
+    {% endif %}
+
+    <a href="{% url 'index_tests' %}" class="btn btn-secondary">Volver</a>
+  </body>
+</html>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block content %}
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Editar pregunta</title>
+  </head>
+  <body>
+    <h2>Editar pregunta</h2>
+    <form method="post">
+      {% csrf_token %} {{ form.as_p }}
+      <button type="submit">Guardar pregunta</button>
+    </form>
+  </body>
+</html>
+{% endblock %}

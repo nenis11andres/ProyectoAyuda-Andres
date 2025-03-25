@@ -1,0 +1,75 @@
+{% extends 'base.html' %} {% block content %}
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tests</title>
+  </head>
+  <body>
+    {% if messages %}
+		<div class="messages">
+		{% for message in messages %}
+			<div class="alert {% if message.tags %}alert-{{ message.tags }}"{% endif %}>
+				{{ message }}
+			</div>
+		{% endfor %}
+		</div>
+	{% endif %}
+    {% if tests %}
+    <table class="table table-dark table-responsive">
+      <caption>
+        Tests de autoevaluación
+      </caption>
+      <thead>
+        <tr>
+          <th>Autor</th>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for test in tests %}
+        <tr>
+          <td>{{ test.autor }}</td>
+          <td>{{ test.nombre }}</td>
+          <td>{{ test.descripcion }}</td>
+          <td>
+            <a href="{% url 'ver_preguntas' test.id %}" class="btn btn-light"
+              >Ver preguntas</a
+            >
+          </td>
+          <td>
+            <a
+              href="{% url 'agregar_pregunta' test.id %}"
+              class="btn btn-success"
+              >Añadir preguntas</a
+            >
+          </td>
+          <td>
+            <form
+              method="POST"
+              action="{% url 'eliminar_test' test.id %}"
+              onsubmit="return confirm('¿Seguro?')"
+            >
+              {% csrf_token %}
+              <button type="submit" value="borrar" class="btn btn-danger">
+                Eliminar
+              </button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <h2>No hay tests disponibles</h2>
+    {% endif %}
+
+    <a href="{% url 'crear_test' %}" class="btn btn-primary">Crear test</a>
+  </body>
+</html>
+{% endblock %}

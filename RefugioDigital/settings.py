@@ -38,7 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'usuarios_app',
+<<<<<<< HEAD
+    'tests_app',
+=======
     'foro_app'
+>>>>>>> main
 ]
 
 #Para no usar el users
