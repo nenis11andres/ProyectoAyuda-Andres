@@ -43,7 +43,6 @@ INSTALLED_APPS = [
 #Para no usar el users
 AUTH_USER_MODEL = 'usuarios_app.Usuario'
 
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
