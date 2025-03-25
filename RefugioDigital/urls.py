@@ -16,7 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from usuarios_app.views import login_view,registro,logout_view,inicio_view #eliminar inicio_view cuando se cambie
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("registro/", registro, name="registro"),
+    path("login/", login_view, name="login"),
+    path('logout/', logout_view, name='logout'),
+    
 ]
