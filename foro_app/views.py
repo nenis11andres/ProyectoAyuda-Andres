@@ -22,7 +22,7 @@ def crear_publicacion(request):
             #Guardamos la publicacion
             publicacion.save()
             #Mostramos de nuevo las publicaciones
-            return redirect('index')
+            return redirect('foro')
     else:
         form=PublicacionForm()
         
