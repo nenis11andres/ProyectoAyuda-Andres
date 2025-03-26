@@ -43,6 +43,8 @@ INSTALLED_APPS = [
 
 #Para no usar el users
 AUTH_USER_MODEL = 'usuarios_app.Usuario'
+LOGIN_REDIRECT_URL = '/foro/'
+
 
 
 MIDDLEWARE = [
