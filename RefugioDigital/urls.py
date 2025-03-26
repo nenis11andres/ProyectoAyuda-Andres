@@ -22,7 +22,7 @@ from tests_app.views import index, crear_test, ver_preguntas, agregar_pregunta, 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("registro/", registro, name="registro"),
-    path("login/", login_view, name="login"),
+    path("", login_view, name="login"),
     path('logout/', logout_view, name='logout'),
     path('index_tests/', index, name='index_tests'),
     path('crear_test/', crear_test, name='crear_test'),
