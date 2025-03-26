@@ -10,3 +10,20 @@ def foro(request):
     #Recoger las publicaciones del usuario
     publicaciones=Publicacion.objects.all()
     return render(request, 'foro.html', {'publicaciones': publicaciones})
+
+def crear_publicacion(request):
+    if request.method == 'POST':
+        form=PublicacionForm(request.POST)
+        if form.is_valid():
+            # Recogemos la publicacion pero no lo guardamos
+            publicacion = form.save(commit=False)
+            #Asignamos el usuario a la publicacion
+            publicacion.autor = request.user
+            #Guardamos la publicacion
+            publicacion.save()
+            #Mostramos de nuevo las publicaciones
+            return redirect('index')
+    else:
+        form=PublicacionForm()
+        
+    return render(request, 'nuevapublicacion.html', {'form': form})

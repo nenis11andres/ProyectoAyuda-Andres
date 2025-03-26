@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>{{publicacion.contenido}}</h1>
+<a href="{% url 'crear_publicacion' %}" class="btn btn-primary mb-3 mt-3">Publicar</a>
 <table class="table table-striped table-hover">
     <thead>
         <th>Autor</th>
