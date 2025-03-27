@@ -13,7 +13,7 @@
             <td>{{ publicacion.autor }}</td>
             <td>{{ publicacion.contenido }}</td>
             <td>{{ publicacion.fecha }}</td>
-            <td><a class="btn btn-primary mb-3 mt-3">Chat</a></td>
+            <td><a href="{%url 'chat_foro' publicacion_id=publicacion.id %}" class="btn btn-primary mb-3 mt-3">Chat</a></td>
 
         </tr>
     {% empty %}

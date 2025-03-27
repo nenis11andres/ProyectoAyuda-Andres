@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+    
+        {% for mensaje in mensajes %}
+        <div class="mb-2 p-2 rounded text-bg-success">
+            <p><strong>{{ mensaje.remitente.username }}:</strong> {{ mensaje.contenido }}</p>
+    
+            <p><small>{{ mensaje.fecha_envio }}</small></p>
+        </div>
+        {% empty %}
+            <p>No hay mensajes aún.</p>
+        {% endfor %}
+        <form method="POST" class="mt-3">
+            {% csrf_token %}
+            {{ form.as_p }}  
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+    </div>
+
+</div>
+{% endblock %}
