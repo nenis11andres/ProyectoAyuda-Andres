@@ -4,7 +4,7 @@ from django.views.generic import RedirectView
 from usuarios_app.views import login_view, registro, logout_view, inicio_view
 from foro_app.views import foro, crear_publicacion
 from tests_app.views import index, crear_test, ver_preguntas, agregar_pregunta, eliminar_test, editar_pregunta, eliminar_pregunta
-
+from chat_app.views import listar_psicologos,chat,chat_foro
 urlpatterns = [
     path('', RedirectView.as_view(url='/login/', permanent=False), name='root'),  # Redirigir la raíz al login
     path('foro/', foro, name="foro"),
@@ -20,4 +20,7 @@ urlpatterns = [
     path('agregar_pregunta/<int:pk>', agregar_pregunta, name='agregar_pregunta'),
     path('editar_pregunta/<int:pkPregunta>/<int:pkTest>', editar_pregunta, name='editar_pregunta'),
     path('eliminar_pregunta/<int:pkPregunta>/<int:pkTest>', eliminar_pregunta, name='eliminar_pregunta'),
+    path('chat/<int:publicacion_id>/',chat_foro,name='chat_foro' ),
+    path('chat_psicologo/<int:usuario_id>/',chat,name='chat' ),
+    path('listado/', listar_psicologos,name='listar_psicologos')
 ]

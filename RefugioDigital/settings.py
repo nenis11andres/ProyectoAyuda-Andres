@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'usuarios_app',
     'foro_app',
     'tests_app',
+    'chat_app',
 ]
 
 #Para no usar el users
